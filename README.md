@@ -9,7 +9,7 @@ JWTRefreshTokenBundle
 [![License](https://poser.pugx.org/gesdinet/jwt-refresh-token-bundle/license)](https://packagist.org/packages/gesdinet/jwt-refresh-token-bundle)
 [![StyleCI](https://styleci.io/repos/42582199/shield)](https://styleci.io/repos/42582199)
 
-The purpose of this bundle is manage refresh tokens with JWT (Json Web Tokens) in an easy way. This bundles uses [LexikJWTAuthenticationBundle](https://github.com/lexik/LexikJWTAuthenticationBundle). At the moment only supports Doctrine ORM.
+The purpose of this bundle is manage refresh tokens with JWT (Json Web Tokens) in an easy way. This bundles uses [LexikJWTAuthenticationBundle](https://github.com/lexik/LexikJWTAuthenticationBundle). Supports Doctrine ORM/ODM.
 
 Prerequisites
 -------------
@@ -79,7 +79,10 @@ Open your main routing configuration file (usually `app/config/routing.yml`) and
 # app/config/routing.yml
 gesdinet_jwt_refresh_token:
     path:     /api/token/refresh
-    defaults: { _controller: gesdinet.jwtrefreshtoken::refresh }
+    # Symfony 3.x
+    defaults: { _controller: gesdinet.jwtrefreshtoken:refresh }
+    # Symfony 4.x
+    defaults: { _controller: Gesdinet\JWTRefreshTokenBundle\Service\RefreshToken::refresh }
 # ...
 ```
 
